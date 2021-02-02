@@ -1,0 +1,43 @@
+﻿  @model Coche
+
+<div class="card bg-primary">
+    <div class="card-header">Entity Framework</div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Conductor</th>
+                    <th>Imagen</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.marca</td>
+                    <td>@Model.modelo</td>
+                    <td>@Model.conductor</td>
+                    <td>
+                        <img src="@Model.imagen" alt="coche @Model.marca" style="width:130px;height:130px" />
+                    </td>
+                    <td>
+                        <a asp-controller="Coches" asp-action="EditarCoche" asp-route-id="@Model.id" class="nav-link text-black-50">
+                            Editar
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Coches" asp-action="EliminarCoche" asp-route-id="@Model.id" class="nav-link text-black-50">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a asp-controller="Coches" asp-action="Index" class="btn btn-primary text-black-50">
+            Home Car
+        </a>
+    </div>
+    <div class="card-footer">Enrique Muñoz Romera</div>
+</div>

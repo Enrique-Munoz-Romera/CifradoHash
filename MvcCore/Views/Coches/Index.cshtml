@@ -1,0 +1,33 @@
+﻿@model List<Coche>
+
+<div class="card text-dark text-center bg-secondary mb-3">
+    <div class="card-header">Práctica Entity Framework</div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <a asp-controller="Coches" asp-action="CrearCoche" class="text-black-50 nav-item">
+                    Crear
+                </a>
+            </li>
+            @foreach (Coche car in Model)
+            {
+                <li class="list-group-item">@car.marca</li>
+                <li class="list-group-item">@car.modelo</li>
+                <li class="list-group-item">@car.conductor</li>
+                <li class="list-group-item">
+                    <img src="@car.imagen" alt="coche" style="width:100px;height:100px" />
+                </li>
+                <li class="list-group-item active">
+                    <a asp-controller="Coches" asp-action="DetallesCoches" asp-route-id="@car.id" class="text-black-50 btn-outline-dark">
+                        Detalles
+                    </a>
+                </li>
+                <li class="list-group-item active">
+                    <a asp-controller="Coches" asp-action="EliminarCoche" asp-route-id="@car.id" class="text-black-50 btn-outline-dark">
+                        Eliminar
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
