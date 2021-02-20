@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CypherHash.Data;
+using CypherHash.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,11 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MvcCore.Data;
-using MvcCore.Repositories;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
-namespace MvcCore
+namespace CypherHash
 {
     public class Startup
     {
@@ -24,17 +24,9 @@ namespace MvcCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //DI / IOC Repositories
-            services.AddTransient<RepositoryCochesSql>();
-            services.AddTransient<RepositoryCochesMySql>();
-            services.AddTransient<IRepositoryCoches,RepositoryCochesSql>();
-            services.AddTransient<IRepositoryCoches,RepositoryCochesMySql>();
-            //Services of DI & IOC bbdd
-            //String cadena = this.configuration.GetConnectionString("Sql");
-            String cadena = this.configuration.GetConnectionString("MySql");
-            services.AddDbContext<CochesContext>(options => options.UseMySql(cadena, new MySqlServerVersion(new Version(8, 0, 22)),
-              MySQLOptionsAction => MySQLOptionsAction.CharSetBehavior(CharSetBehavior.NeverAppend)));
-            //services.AddDbContext<CochesContext>(options => options.UseSqlServer(cadena));
+            services.AddTransient<RepositoryHash>();
+            String cadena = this.configuration.GetConnectionString("Sql");
+            services.AddDbContext<CypherHashContext>(options => options.UseSqlServer(cadena));
             services.AddControllersWithViews();
         }
 
