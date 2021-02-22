@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CypherHash.Information
+namespace CifradoHash.Information
 {
     public class Readme
     {

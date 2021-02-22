@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 
-namespace CypherHash.Helpers
+namespace CifradoHash.Helpers
 {
     public static class ToolKit
     {

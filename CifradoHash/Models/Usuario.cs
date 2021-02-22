@@ -5,18 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-#region BBDD
-//CREATE TABLE CYPHERHASH
-//(
-//	IdUser int not null,
-//    Nombre nvarchar(50),
-//	Usuario nvarchar(50),
-//	Pswd varbinary(max),
-//	Salt nvarchar(50)
-//)
-//select* from CYPHERHASH
-#endregion
-namespace CypherHash.Models
+namespace CifradoHash.Models
 {
     [Table("CYPHERHASH")]
     public class Usuario
@@ -38,5 +27,6 @@ namespace CypherHash.Models
 
         [Column("Salt")]
         public string salt { get; set; }
+
     }
 }
